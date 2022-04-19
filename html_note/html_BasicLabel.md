@@ -1,6 +1,6 @@
-## html文件结构
+## html基础标签
 
-### 文档结构
+### 1.1 html文件结构
 
 html的所有标签为树形结构，例如：
 
@@ -65,7 +65,7 @@ HTML  title 元素 定义文档的标题，显示在浏览器的标题栏或标�
 
 <font color='red'> **\<meta>**</font>
 
-HTML <meta>元素表示  那些不能由其它 HTML 元相关（meta-related）元素（<base>、<link>, <script>、<style> 或 <title>）之一表示的任何元数据信息。
+HTML \<meta>元素表示  那些不能由其它 HTML 元相关（meta-related）元素（\<base>、\<link>, \<script>、\<style> 或 \<title>）之一表示的任何元数据信息。
 
 
 常见属性：
@@ -107,4 +107,10 @@ HTML <meta>元素表示  那些不能由其它 HTML 元相关（meta-related）�
 </body>
 </html>
 ```
+
+​    
+
+​      
+
+### 1.2 文本标签
 
