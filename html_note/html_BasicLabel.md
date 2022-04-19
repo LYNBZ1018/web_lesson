@@ -40,26 +40,31 @@ lang 语言
 ***
 
 <font color='red'> **\<html>**</font>标签
+
 HTML html 元素 表示一个 HTML 文档的根（顶级元素），所以它也被称为根元素。所有其他元素必须是此元素的后代。
 
 ***
 
 <font color='red'> **\<head>**</font>标签
+
 HTML head 元素 规定文档相关的配置信息（元数据），包括文档的标题，引用的文档样式和脚本等。
 
 ***
 
 <font color='red'> **\<body>**</font>标签
+
 HTML body 元素表示文档的内容。document.body 属性提供了可以轻松访问文档的 body 元素的脚本。
 
 ***
 
 <font color='red'> **\<title>**</font>标签
+
 HTML  title 元素 定义文档的标题，显示在浏览器的标题栏或标签页上。它只应该包含文本，若是包含有标签，则它包含的任何标签都将被忽略。
 
 ***
 
 <font color='red'> **\<meta>**</font>
+
 HTML <meta>元素表示  那些不能由其它 HTML 元相关（meta-related）元素（<base>、<link>, <script>、<style> 或 <title>）之一表示的任何元数据信息。
 
 
