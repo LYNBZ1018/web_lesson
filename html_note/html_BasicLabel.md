@@ -555,4 +555,57 @@ HTML \<footer> 元素表示**最近一个章节内容或者根节点（sectionin
 
 ## 1.10  特殊符号
 
-![4.jpg](https://cdn.acwing.com/media/article/image/2022/04/20/189403_56548c7ac0-4.jpg) 
+<table>
+    <caption><b>特殊符号</b></caption>
+    <thead>
+        <tr>
+            <th>HTML源代码</th>
+            <th >显示结果</th>
+            <th >描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&amp;lt;</td>
+            <td>&lt;</td>
+            <td>小于号</td>
+        </tr>
+         <tr>
+            <td>&amp;gt;;</td>
+            <td>&gt;</td>
+            <td>大于号或显示标记</td>
+        </tr>
+         <tr>
+            <td>&amp;amp;</td>
+            <td>&amp;</td>
+            <td>可用于显示其它特殊字符</td>
+        </tr>
+         <tr>
+            <td>&amp;quot;</td>
+            <td>&quot;</td>
+            <td>引号</td>
+        </tr>
+         <tr>
+            <td>&amp;reg;</td>
+            <td>&reg;</td>
+            <td>已注册</td>
+        </tr>
+         <tr>
+            <td>&amp;copy;</td>
+            <td>&copy;</td>
+            <td>版权</td>
+        </tr>
+         <tr>
+            <td>&amp;trade;</td>
+            <td>&trade;</td>
+            <td>商标</td>
+        </tr>
+         <tr>
+            <td>&amp;nbsp;</td>
+            <td>&nbsp;</td>
+            <td>不断行的空白</td>
+        </tr>
+    </tbody>
+</table>
+
+
