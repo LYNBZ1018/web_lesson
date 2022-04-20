@@ -239,3 +239,309 @@ HTML \<audio> 元素用于在文档中嵌入音频内容。 \<audio> 元素可�
 
 ***
 
+**video** 标签
+HTML \<video> 元素 用于在 HTML 或者 XHTML 文档中嵌入媒体播放器，用于支持文档内的视频播放。你也可以将 \<video> 标签用于音频内容，但是 \<audio> 元素可能在用户体验上更合适。
+
+示例：
+
+```html
+<video controls width="800">
+
+    <source src="/videos/video1.mp4"
+            type="video/mp4">
+
+    <source src="/videos/video2.mp4"
+            type="video/mp4">
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
+```
+
+***
+
+​       
+
+## 1.5 超链接
+
+HTML \<a> 元素（或称锚元素）可以通过它的 href 属性创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。\<a> 中的内容应该指明链接的意图。如果存在 href 属性，当 \<a> 元素聚焦时按下回车键就会激活它。
+
+```html
+点击链接打开新标签页面时加入属性：target="_blank"
+```
+
+```html
+<a target="_blank" href="/github.com/LYNBZ1018">LYNBZ1018</a>
+```
+
+***
+
+​      
+
+## 1.6 表单
+
+**\<form>**标签
+HTML \<form> 元素表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。
+
+***
+
+**\<input>**标签
+HTML \<input>用来填写内容，常见类型有：
+
+* \<input type="text">：创建基础的单行文本框。
+
+  ```html
+  <input type="number" name="username" id="username" required minlength="3" maxlength="15" placeholder="用户名">
+  ```
+
+* \<input type="number">：用于让用户输入一个数字。其包括内置验证以拒绝非数字输入。浏览器可能会选择提供步进箭头，让用户可以使用鼠标增加和减少输入的值，或者只需用指尖敲击即可。
+
+* \<input type="email">：带有 “email” (电子邮箱) 类型标记的输入框元素 (\<input>) 能够让用户输入或编辑一个电子邮箱地址，此外，如果指定了multiple属性，用户还可以输入多个电子邮箱地址。在表单提交前，输入框会自动验证输入值是否是一个或多个合法的电子邮箱地址 (非空值且符合电子邮箱地址格式). CSS 伪标签 :valid 和 :invalid 能够在校验后自动应用。
+
+* \<input type="password">：\<input> 元素 里有一种叫做 “password” 的值，给我们一个方法让用户更加安全的输入密码。这个元素是作为一行纯文本编辑器控件呈现的，其中文本被遮蔽以致于无法读取，通常通过用诸如星号（“*”）或点（“•”）等符号替换每个字符来实现。这个符号会根据用户的浏览器和操作系统来具体显示哪个。
+
+* \<input type="radio">：\<input> 的 radio 类型元素默认渲染为小型圆圈图表，填充即为激活，类似于之前描述额复选框（checkbox）类型。单选按钮允许你选择单一的值来提交表单。
+
+**常用属性**有:
+
+* name: 名称
+
+* id: 唯一ID
+
+* maxlength：最大长度
+
+* minlength：最小长度
+
+* required：是否必填
+
+* placeholder：当表单控件为空时，控件中显示的内容
+
+***
+
+**\<textarea>**标签
+HTML \<textarea> 元素表示一个多行纯文本编辑控件，当你希望用户输入一段相当长的、不限格式的文本，例如评论或反馈表单中的一段意见时，这很有用。
+
+```html
+  <textarea name="resume" id="resume" cols="30" rows="10" placeholder="个人简介"></textarea>
+```
+
+***
+
+**\<select>**与**\<option>**标签
+HTML \<select> 元素表示一个提供选项菜单的控件。
+
+
+示例：
+
+```html
+<label for="pet-select">Choose a pet:</label>
+
+<select name="pets" id="pet-select">
+    <option value="">--Please choose an option--</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+</select>
+```
+
+<select name="pets" id="pet-select">
+    <option value="">--Please choose an option--</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+</select>
+
+***
+
+**\<button>**标签
+HTML \<button> 元素表示一个可点击的按钮，可以用在表单或文档其它需要使用简单标准按钮的地方。 默认情况下，HTML 按钮的显示样式接近于 user agent 所在的宿主系统平台（用户操作系统）的按钮， 但你可以使用 CSS 来改变按钮的样貌。
+
+***
+
+​      
+
+## 1.7 列表
+
+**\<ul>**与**\<li>**标签
+HTML \<ul> 元素（或称 HTML 无序列表元素）表示一个内可含多个元素的无序列表或项目符号列表。
+
+示例：
+
+```html
+<ul>
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ul>
+```
+
+html示例：
+
+<ul>
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ul>
+
+***
+
+\<ol>与\<li>标签
+HTML \<ol> 元素表示有序列表，通常渲染为一个带编号的列表。
+
+
+示例：
+
+```html
+<ol>
+  <li>Fee</li>
+  <li>Fi</li>
+  <li>Fo</li>
+  <li>Fum</li>
+</ol>
+```
+
+html示例
+
+<ol>
+  <li>Fee</li>
+  <li>Fi</li>
+  <li>Fo</li>
+  <li>Fum</li>
+</ol>
+
+***
+
+\<dl>、\<dt>与<\dd>标签
+HTML \<dl> 元素 （或 HTML 描述列表元素）是一个包含术语定义以及描述的列表，通常用于展示词汇表或者元数据 (键 - 值对列表)。
+
+示例：
+
+```html
+<dl>
+    <dt>Name</dt>
+    <dd>Godzilla</dd>
+    <dt>Born</dt>
+    <dd>1952</dd>
+    <dt>Birthplace</dt>
+    <dd>Japan</dd>
+    <dt>Color</dt>
+    <dd>Green</dd>
+    <dd>Orange</dd>
+</dl>
+```
+
+<dl>
+    <dt>Name</dt>
+    <dd>Godzilla</dd>
+    <dt>Born</dt>
+    <dd>1952</dd>
+    <dt>Birthplace</dt>
+    <dd>Japan</dd>
+    <dt>Color</dt>
+    <dd>Green</dd>
+    <dd>Orange</dd>
+</dl>
+
+***
+
+​      
+
+## 1.8 表格
+
+\<table>标签
+HTML的 table 元素表示表格数据 — 即通过二维数据表表示的信息。
+
+\<thead>标签
+HTML的\<thead>元素定义了一组定义表格的列头的行。
+
+\<tbody>标签
+HTML的\<tbody>元素定义一组数据行。
+
+\<tr>标签
+HTML \<tr> 元素定义表格中的行。 同一行可同时出现\<td> 和\<th> 元素。
+
+\<th>标签
+HTML \<th>元素定义表格内的表头单元格。
+
+\<td>标签
+HTML \<td> 元素 定义了一个包含数据的表格单元格。
+
+\<caption>标签
+HTML \<caption> 元素 (or HTML 表格标题元素) 展示一个表格的标题， 它常常作为 \<table> 的第一个子元素出现，同时显示在表格内容的最前面，但是，它同样可以被 CSS 样式化，所以，它同样可以出现在相对于表格的任意位置。
+
+**示例**
+
+```html
+<table>
+    <caption>My Table</caption>
+    <thead>
+        <tr>
+            <th colspan="2">The table header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+<table>
+    <caption>My Table</caption>
+    <thead>
+        <tr>
+            <th colspan="2">The table header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr>
+    </tbody>
+</table>
+
+***
+
+​       
+
+## 1.9 语义标签
+
+![1.gif](https://cdn.acwing.com/media/article/image/2022/04/20/189403_167cd034c0-1.gif) 
+
+**\<header>**
+HTML \<header> 元素用于展示介绍性内容，通常包含一组介绍性的或是辅助导航的实用元素。它可能包含一些标题元素，但也可能包含其他元素，比如 Logo、搜索框、作者名称，等等。
+
+***
+
+**\<nav>**
+HTML \<nav>元素表示页面的一部分，其目的是在当前文档或其他文档中提供导航链接。导航部分的常见示例是菜单，目录和索引。
+
+***
+
+**\<section>**
+HTML \<section>元素表示一个包含在 HTML 文档中的独立部分，它没有更具体的语义元素来表示，一般来说会有包含一个标题。
+
+***
+**\<figure>**
+HTML \<figure> 元素代表一段独立的内容，经常与说明（caption）\<figcaption> 配合使用，并且作为一个独立的引用单元。当它属于主内容流（main flow）时，它的位置独立于主体。这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主体。
+***
+**\<figcaption>**
+HTML \<figcaption> 元素 是与其相关联的图片的说明/标题，用于描述其父节点 <figure> 元素里的其他数据。这意味着 \<figcaption> 在\<figure> 块里是第一个或最后一个。同时 HTML Figcaption 元素是可选的；如果没有该元素，这个父节点的图片只是会没有说明/标题。
+***
+**\<article>**
+HTML \<article>元素表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。
+***
+**\<aside>**
+HTML \<aside> 元素表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者标注框（call-out boxes）。
+***
+**\<footer>**
+HTML \<footer> 元素表示最近一个章节内容或者根节点（sectioning root ）元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
+
