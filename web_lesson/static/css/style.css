@@ -1,21 +1,12 @@
-img {
-    /* 按照标签进行修改 标签选择器*/
-    width: 300px;
-    border-radius: 50%;
-}
-
 p {
-    width: 100px;
-    height: 100px;
-    background-color: lightblue;
+    width: 70px;
+    height: 700px;
+    background-color: aqua;
 }
 
-.green-p {
-    font-size: 30px;
-    background-color: lightgreen;
-}
-
-.big {
-    width: 150px;
-    height: 150px;
+p:target {
+    color: red;
+    font-size: 20pt;
+    transform: scale(1.2);
+    transition: 2s;
 }

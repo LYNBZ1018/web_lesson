@@ -76,6 +76,10 @@
 
 ## 1.2 选择器
 
+1. 啥都不加 标签
+2.   \# id
+3.   .    class
+
 **标签选择器**
 选择所有div标签：
 
@@ -90,6 +94,14 @@ div {
 **ID选择器**
 选择ID为rect-1的标签：
 
+同一个文件内id一般是不重复的（也可以定义重复的）
+
+```html
+<p id="myp">p 1</p>
+```
+
+#id    .class
+
 ```css
 #rect-1 {
     width: 200px;
@@ -99,6 +111,9 @@ div {
 ```
 
 **类选择器**
+
+class可以重复
+
 选择所有rectangle类的标签：
 
 一个标签里可以有多个类只需要用空格隔开
@@ -115,32 +130,99 @@ div {
 }
 ```
 
-**伪类选择器**
+**伪类选择器**  **状态标签**
 伪类用于定义元素的特殊状态。
 
 链接伪类选择器：
 
 * :link：链接访问前的样式
+
 * :visited：链接访问后的样式
+
 * :hover：鼠标悬停时的样式
+
 * :active：鼠标点击后长按时的样式
+
 * :focus：聚焦后的样式
+
+  ```css
+  .effect:hover {
+      transform: scale(1.1);  /*变大*/
+      transition: 200ms;  /*延缓*/
+  }
+  
+  #effc:hover {
+      background-color: lightgreen;
+      transition: 200ms;
+  }
+  
+  /*聚焦之后点击后才会发生变化 hover是鼠标悬浮在上边就会变换*/
+  input {
+      width: 20px;
+      background-color: azure;
+  }
+  
+  input:focus {
+      width: 50px;
+      background-color: lightblue;
+  }
+  ```
+
+  
 
 位置伪类选择器：
 
+会判断每个是否满足 满足的话才会触发
+
 * :nth-child(n)：选择是其父标签第n个子元素的所有元素。
+
+  ```css
+  p:nth-chile(odd) { /*会进行一个判断从第一个标签开始，若果p标签不是奇数儿子就不会变红*/ 
+  	color: red;
+  }
+  ```
+
+  
 
 目标伪类选择器：
 
 * :target：当url指向该元素时生效。
 
+```css
+也可以指向对应的id
+<a href="#p-5">p5</a>
+```
+
+
+
 **复合选择器**
 由两个及以上基础选择器组合而成的选择器。
 
 * element1, element2：同时选择元素element1和元素element2。
+
 * element.class：选则包含某类的element元素。
+
+  ```css
+  div.big.real
+  /*同时big 和 real的才会变化*/
+  ```
+
 * element1 + element2：选择紧跟element1的element2元素。
+
+  ```css
+  div + p {  /*只修改div后边的那个p*/
+      
+  }
+  ```
+
 * element1 element2：选择element1内的所有element2元素。
+
+  ```css
+  ul ul {  /*ul 里的 ul 会变化  祖先节点是ul 的 ul*/
+      
+  }
+  ```
+
 * element1 > element2：选择父标签是element1的所有element2元素。
 
 **通配符选择器**
@@ -148,6 +230,18 @@ div {
 * \*：选择所有标签
 * [attribute]：选择具有某个属性的所有标签
 * [attribute=value]：选择attribute值为value的所有标签
+
+```css
+input[id] {
+    
+}
+inputp[require] {
+    
+}
+input[type=number] {  /*选择type为number的标签*/
+    
+}
+```
 
 **伪元素选择器**
 将特定内容当做一个元素，选择这些元素的选择器被称为伪元素选择器。
@@ -158,8 +252,36 @@ div {
 * ::after：可以在元素后插入内容
 * ::before：可以在元素前插入内容
 
+```css
+/*一个段落上的第一个字进行修改 可以把一个字加入一个span标签中*/
+/*也可以*/
+p::first-letter {
+    color: red;
+}
+
+h1::before {  /*在标题的前后加上书名号*/
+    content: "《";
+    color: red;
+}
+
+h1::after {
+    content: "》";
+    color: red;
+}
+```
+
 **样式渲染优先级**
+
 * 权重大小，越具体的选择器权重越大：!important > 行内样式 > ID选择器 > 类与伪类选择器 > 标签选择器 > 通用选择器
+
+  ```html
+  p {
+  	width: 50px;
+  	height: 70px;
+  	background-color: blue !important;  /*提到最高优先级*/
+  }
+  ```
+
 * 权重相同时，后面的样式会覆盖前面的样式
 * 继承自父元素的权重最低
 
@@ -188,6 +310,6 @@ rgba(173, 216, 230, 0.5)。
 
 **取色方式**
 网页里的颜色，可以在chrome的调试模式下获取
-其他颜色可以使用QQ的截图软件：
+其他颜色可以使用QQ的截图软件：**ctrl + alt + a**
 直接按c键，可以复制rgb颜色值
 按住shift再按c键，可以复制16进制颜色值
