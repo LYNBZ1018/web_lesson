@@ -1,0 +1,21 @@
+img {
+    /* 按照标签进行修改 标签选择器*/
+    width: 300px;
+    border-radius: 50%;
+}
+
+p {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+}
+
+.green-p {
+    font-size: 30px;
+    background-color: lightgreen;
+}
+
+.big {
+    width: 150px;
+    height: 150px;
+}

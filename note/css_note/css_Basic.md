@@ -22,14 +22,47 @@
 
 * 作用范围：可以对同一个页面中的多个元素产生影响。
 
-   
+
+```css
+<style type="text/css">
+        img {
+            /* 按照标签进行修改 标签选择器*/
+            width: 300px;
+            border-radius: 10%;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .green-p {
+            font-size: 30px;
+            background-color: lightgreen;
+        }
+
+        .big {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+```
+
+
 
 **外部样式表（external style sheet）**
 定义在css样式文件中，通过选择器影响对应的标签。可以用link标签引入某些页面。
 
 * 作用范围：可以对多个页面产生影响。
 
-   
+
+```html
+<!--外部链接css-->
+    <link rel="stylesheet" href="/static/css/style.css">
+```
+
+
 
 **注释**
 注意不能使用//。
@@ -67,6 +100,12 @@ div {
 
 **类选择器**
 选择所有rectangle类的标签：
+
+一个标签里可以有多个类只需要用空格隔开
+
+```html
+<p class="blue-p big">1</p>
+```
 
 ```css
 .rectangle {

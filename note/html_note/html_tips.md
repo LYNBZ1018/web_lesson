@@ -14,4 +14,13 @@
   </head>
   ```
 
+
+* 添加logo
+
+  ```html
+  <head>
+      <link rel="icon" href="/static/images/logo.jpg">
+  </head>
+  ```
+
   
