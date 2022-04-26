@@ -103,10 +103,13 @@ div {
 * element1 + element2：选择紧跟element1的element2元素。
 * element1 element2：选择element1内的所有element2元素。
 * element1 > element2：选择父标签是element1的所有element2元素。
+
 **通配符选择器**
+
 * \*：选择所有标签
 * [attribute]：选择具有某个属性的所有标签
 * [attribute=value]：选择attribute值为value的所有标签
+
 **伪元素选择器**
 将特定内容当做一个元素，选择这些元素的选择器被称为伪元素选择器。
 
