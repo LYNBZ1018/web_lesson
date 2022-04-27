@@ -461,25 +461,25 @@ border-style 是一个 CSS 简写属性，用来设定元素所有边框的样�
 
 border-width属性可以设置盒子模型的边框宽度。
 
-  
+​       
 
 **border-color**
 
 SS属性border-color 是一个用于设置元素四个边框颜色的快捷属性： border-top-color, border-right-color, border-bottom-color, border-left-color
 
-​    
+​      
 
 **border-radius**
 
 CSS 属性 border-radius 允许你设置元素的外边框圆角。当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。这个(椭)圆与边框的交集形成圆角效果。
 
-​      
+​        
 
 **border-collapse**
 
 border-collapse CSS 属性是用来决定表格的边框是分开的还是合并的。在分隔模式下，相邻的单元格都拥有独立的边框。在合并模式下，相邻单元格共享边框。
 
-​      
+​         
 
 ## 1.8 元素展示格式
 
@@ -496,13 +496,62 @@ border-collapse CSS 属性是用来决定表格的边框是分开的还是合并
   * 可以共占一行
   * width、height、margin、padding均可控制
   * width默认为本身内容宽度
-    
+
+​    
 
 **white-space**
 white-space CSS 属性是用来设置如何处理元素中的 空白 (en-US)。
 
+​    
+
 **text-overflow**
 text-overflow CSS 属性确定如何向用户发出未显示的溢出内容信号。它可以被剪切，显示一个省略号或显示一个自定义字符串。
-    
+
+​     
+
 **overflow**
 CSS属性 overflow 定义当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么。它是 overflow-x 和overflow-y的 简写属性 。
+
+​     
+
+## 1.9 内边距与外边距
+
+**margin**
+
+margin属性为给定元素设置所有四个（上下左右）方向的外边距属性。
+
+* 可以接受1~4个值（上、右、下、左的顺序）
+* 可以分别指明四个方向：margin-top、margin-right、margin-bottom、margin-left
+* 可取值
+  * length：固定值
+  * percentage：相对于包含块的宽度，以百分比值为外边距。
+  * auto：让浏览器自己选择一个合适的外边距。有时，在一些特殊情况下，该值可以使元素居中。
+* 外边距重叠
+  * 块的上外边距(margin-top)和下外边距(margin-bottom)有时合并(折叠)为单个边距，其大小为单个边距的最大值(或如果它们相等，则仅为其中一个)，这种行为称为边距折叠。
+  * 父元素与后代元素：父元素没有上边框和padding时，后代元素的margin-top会溢出，溢出后父元素的margin-top会与后代元素取最大值。
+
+***
+
+**padding**
+
+padding CSS 简写属性控制元素所有四条边的内边距区域。
+
+* 可以接受1~4个值（上、右、下、左的顺序）
+* 可以分别指明四个方向：padding-top、padding-right、padding-bottom、padding-left
+* 可取值
+  * length：固定值
+  * percentage：相对于包含块的宽度，以百分比值为内边距。
+
+​    
+
+## 1.10 盒子
+
+**box-sizing**
+
+CSS 中的 box-sizing 属性定义了 user agent 应该如何计算一个元素的总宽度和总高度。
+
+* content-box：是默认值，设置border和padding均会增加元素的宽高。
+
+* border-box：设置border和padding不会改变元素的宽高，而是挤占内容区域。
+
+​     
