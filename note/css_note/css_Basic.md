@@ -342,7 +342,11 @@ rgba(173, 216, 230, 0.5)。
 
 text-align CSS属性定义行内内容（例如文字）如何相对它的块父元素对齐。text-align 并不控制块元素自己的对齐，只控制它的行内内容的对齐。
 
-​    
+```css
+div {  /*子标签会继承父标签的属性*/
+    text-align: center;
+}
+```
 
 **line-height**
 
@@ -391,10 +395,24 @@ text-indent属性能定义一个块元素首行文本内容之前的缩进量。
 **text-decoration**
 
 text-decoration 这个 CSS 属性是用于设置文本的修饰线外观的（下划线、上划线、贯穿线/删除线 或 闪烁）它是 text-decoration-line, text-decoration-color, text-decoration-style, 和新出现的 text-decoration-thickness 属性的缩写。
-    
+
+```css
+/*可以用于删除超链接的下划线*/
+a {
+    text-decoration: none;
+}
+```
+
+
 **text-shadow**
 
 text-shadow为文字添加阴影。可以为文字与 text-decorations 添加多个阴影，阴影值之间用逗号隔开。每个阴影值由元素在X和Y方向的偏移量、模糊半径和颜色值组成。
+
+```csss
+.mydiv {
+	text-shadow: 3px 3px 2px grey;  /*向右偏移3向下偏移3 模糊2 灰色阴影*/
+}
+```
 
 ​     
 
@@ -416,6 +434,15 @@ font-weight CSS 属性指定了字体的粗细程度。 一些字体只提供 no
 
 CSS 属性 font-family 允许您通过给定一个有先后顺序的，由字体名或者字体族名组成的列表来为选定的元素设置字体。
 属性值用逗号隔开。浏览器会选择列表中第一个该计算机上有安装的字体，或者是通过 @font-face 指定的可以直接下载的字体。
+
+```css
+/*font-family 设置字体 可以在MDN中找有什么样的字体*/
+.mydiv {
+    font-family: system-ui;
+}
+```
+
+
 
 ​     
 
@@ -447,7 +474,18 @@ background-position 为背景图片设置初始位置。
 
 background-attachment CSS 属性决定背景图像的位置是在视口内固定，或者随着包含它的区块滚动。
 
-   
+   ```css
+.mydiv {
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/images/moutains.jpg');
+    background-color: lightblue;
+    background-size: 50px;  /*设置图片的大小  cover 会使图片覆盖  contain div包含图片*/
+    background-repeat: no-repeat;  /*不重复*/
+}
+   ```
+
+
 
 ## 1.7 边框
 
