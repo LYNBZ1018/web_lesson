@@ -482,8 +482,14 @@ background-attachment CSS 属性决定背景图像的位置是在视口内固定
     background-color: lightblue;
     background-size: 50px;  /*设置图片的大小  cover 会使图片覆盖  contain div包含图片*/
     background-repeat: no-repeat;  /*不重复*/
+    background-attachment: fixed;  /*固定不动*
+    /*scroll 和鼠标一起动*/
 }
    ```
+
+
+
+**opacity: 0.2** **透明度调节**
 
 
 
@@ -517,30 +523,62 @@ CSS 属性 border-radius 允许你设置元素的外边框圆角。当使用一�
 
 border-collapse CSS 属性是用来决定表格的边框是分开的还是合并的。在分隔模式下，相邻的单元格都拥有独立的边框。在合并模式下，相邻单元格共享边框。
 
-​         
+```css
+.mydiv {
+    height: 100px;
+    width: 100px;
+    border-color: lightblue;
+    border-style: solid dotted inset;  /*实线 点 内嵌*/
+    border-width: 2px 4px 6px 8px;
+    border-radius: 50%;  /*圆角 把形状变为圆形或者椭圆*/ 
+}
+
+table {
+    border-collapse: colloapse; /*公共边重合*/
+}
+```
+
+```html         
+(tr>td*3)*3  <!--快速建立一个三行三列的表格-->
+```
 
 ## 1.8 元素展示格式
 
 **display**
-* block：
-  *  独占一行
-  * width、height、margin、padding均可控制
+* block： **块状标签**
+  *  **独占一行**(div h1 p)
+  * width、height、margin**外边距**、padding**内边距**均可控制
   * width默认100%。
-* inline：
-  * 可以共占一行
+* inline：**行内元素**
+  * 可以共占一行(span)
   * width与height无效，水平方向的margin与padding有效，竖直方向的margin与padding无效
-  * width默认为本身内容宽度
-* inline-block
+  * width默认为本身内容宽度**span 设置width没有任何意义**
+* inline-block:  **行内块元素**
   * 可以共占一行
   * width、height、margin、padding均可控制
   * width默认为本身内容宽度
 
-​    
+ ```css
+div {
+    display: inline;  /*div 变成 span*/
+}
+
+span {
+    display: block;  /*span 变成 div*/
+}
+ ```
+
+
 
 **white-space**
 white-space CSS 属性是用来设置如何处理元素中的 空白 (en-US)。
 
-​    
+```css
+div {
+    white-space: nowrap;  /*不换行*/ 
+    white-space: pre;  /*就变成了pre格式*/
+}
+```
 
 **text-overflow**
 text-overflow CSS 属性确定如何向用户发出未显示的溢出内容信号。它可以被剪切，显示一个省略号或显示一个自定义字符串。
@@ -549,6 +587,17 @@ text-overflow CSS 属性确定如何向用户发出未显示的溢出内容信�
 
 **overflow**
 CSS属性 overflow 定义当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么。它是 overflow-x 和overflow-y的 简写属性 。
+
+```css
+div {
+    white-spacce: nowrap;
+    overflow: auto;  /*超出会多一个滚轮*/
+    /*overflow: scroll 
+      overflow-x: scroll 横向有滚轮
+      overflow-y: hidden 纵向隐藏*/
+    text-overflow: elipsis;  /*超出会以省略号显示(前提是横向超出)*/ 
+}
+```
 
 ​     
 
@@ -657,16 +706,17 @@ CSS flex-direction 属性指定了内部元素是如何在 flex 容器中布局�
 * column：flex容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同
 * column-reverse：表现和column相同，但是置换了主轴起点和主轴终点
 
-**flex-wrap**
+**<font color="red" size="5">flex-wrap</font>**
 
 CSS 的 flex-wrap 属性指定 flex 元素单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。
 
 **取值：**
+
 * nowrap：默认值。不换行。
 * wrap：换行，第一行在上方。
 * wrap-reverse：换行，第一行在下方。
 
-**flex-flow**
+**<font color="red" size="5">flex-flow</font>**
 
 CSS flex-flow 属性是 flex-direction 和 flex-wrap 的简写。默认值为：row nowrap。
 
