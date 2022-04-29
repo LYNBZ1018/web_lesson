@@ -646,7 +646,7 @@ float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允�
 
 flex CSS简写属性设置了弹性项目如何增大或缩小以适应其弹性容器中可用的空间。
 
-<b style="color: red; font-size: 17pt">flex-direction</b>
+**<font color="red" size="5">flex-direction</font>**
 
 CSS flex-direction 属性指定了内部元素是如何在 flex 容器中布局的，定义了主轴的方向(正方向或反方向)。
 
