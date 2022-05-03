@@ -629,6 +629,43 @@ padding CSS 简写属性控制元素所有四条边的内边距区域。
   * length：固定值
   * percentage：相对于包含块的宽度，以百分比值为内边距。
 
+**两个div 都加入float: left; 可以让这两个div在同一行**
+
+**width = content + padding + border**
+
+```css
+/*
+有两个上下挨着的div 有上下外边距会取最大的一个margin
+左右挨着的话 就是取相加
+
+***定义相邻的外边距的时候可以只定义下边距 margin-bottom
+*/
+
+.div-outer {
+    width: 400px;
+    height: 300px;
+    background-color: lightblue;
+    /*让子元素在父元素的中间*/
+    /*
+    1. border-top: 1px solid;
+    2. padding-top: 1px;
+    3.overflow: hidden;
+    */
+    
+}
+
+.div-inner {
+    width: 160x;
+    height: 120px;
+    background-color: lightcoral;
+    margin: 10% auto;  /*auto只能用于左右居中   百分比是父元素宽度的百分之多少*/
+}
+
+
+```
+
+
+
 ​    
 
 ## 1.10 盒子
@@ -650,7 +687,7 @@ CSS 中的 box-sizing 属性定义了 user agent 应该如何计算一个元素�
 **position**
 CSS position 属性用于指定一个元素在文档中的定位方式。
 
-**定位类型：**
+**定位类型：**大家好，我们今天不收第九周的考勤表纸质版。下周跟第十周的考勤表一起收。请知晓。
 
 * 定位元素（positioned element）是其计算后位置属性为 relative, absolute, fixed 或 sticky 的一个元素（换句话说，除static以外的任何东西）。
 * 相对定位元素（relatively positioned element）是计算后位置属性为 relative 的元素。
@@ -659,11 +696,18 @@ CSS position 属性用于指定一个元素在文档中的定位方式。
 
 **取值：**
 
-* static：该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 top, right, bottom, left 和 z-index 属性无效。
+* static：该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 **top, right, bottom, left 和 z-index **属性无效。
 * relative：该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。top, right, bottom, left等调整元素相对于初始位置的偏移量。
-* absolute：元素会被移出正常文档流，并不为元素预留空间，通过指定元素相对于最近的非 static 定位祖先元素的偏移，来确定元素位置。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。
+* absolute：元素会被移出正常文档流，并不为元素预留空间，通过指定元素相对于最近的**非 static** 定位祖先元素的偏移，来确定元素位置。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。
 * fixed：元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。
 * sticky：元素根据正常文档流进行定位，然后相对它的最近滚动祖先（nearest scrolling ancestor）和 containing block (最近块级祖先 nearest block-level ancestor)，包括table-related元素，基于top, right, bottom, 和 left的值进行偏移。偏移值不会影响任何其他元素的位置。
+
+```css
+/*fixed 可以用来做回到顶部*/
+/*stick 没到固定距离时是正常的*/
+```
+
+
 
 ​     
 
@@ -688,6 +732,31 @@ float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允�
 * left：清除左侧浮动。
 * right：清除右侧浮动。
 * both：清除左右两侧浮动
+
+```css
+/*用来把不用的div放到同一行*/
+.div-inner {
+    float: left;
+}
+
+.div-inner1 {
+    clear: left;
+}
+```
+
+
+
+
+
+```css
+/*数值居中可以让行高等于高度*/
+.user-card-body-info-username {
+    height: 16px;
+    line-height: 16px;
+}
+```
+
+
 
 ​      
 
