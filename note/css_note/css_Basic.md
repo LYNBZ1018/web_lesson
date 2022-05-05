@@ -775,6 +775,10 @@ CSS flex-direction 属性指定了内部元素是如何在 flex 容器中布局�
 * column：flex容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同
 * column-reverse：表现和column相同，但是置换了主轴起点和主轴终点
 
+**超出了父节点的范围会进行一下压缩**
+
+![1.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_33282212cb-1.png) 
+
 **<font color="red" size="5">flex-wrap</font>**
 
 CSS 的 flex-wrap 属性指定 flex 元素单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。
@@ -785,17 +789,20 @@ CSS 的 flex-wrap 属性指定 flex 元素单行显示还是多行显示。如�
 * wrap：换行，第一行在上方。
 * wrap-reverse：换行，第一行在下方。
 
+![2.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_6073cd9ecb-2.png) 
+
 **<font color="red" size="5">flex-flow</font>**
 
 CSS flex-flow 属性是 flex-direction 和 flex-wrap 的简写。默认值为：row nowrap。
 
-**justify-content**
+**justify-content**  水平对齐
 
 CSS justify-content 属性定义了浏览器之间，如何分配顺着弹性容器主轴(或者网格行轴) 的元素之间及其周围的空间。
 
 **取值：**
 * flex-start：默认值。左对齐。
 * flex-end：右对齐。
+* center: 居中对齐
 * space-between：左右两段对齐。
 * space-around：在每行上均匀分配弹性元素。相邻元素间距离相同。每行第一个元素到行首的距离和每行最后一个元素到行尾的距离将会是相邻元素之间距离的一半。
 * space-evenly：flex项都沿着主轴均匀分布在指定的对齐容器中。相邻flex项之间的间距，主轴起始位置到第一个flex项的间距，主轴结束位置到最后一个flex项的间距，都完全一样。
@@ -810,6 +817,10 @@ CSS align-items属性将所有直接子节点上的align-self值设置为一个�
 * center：元素在侧轴居中。
 * stretch：弹性元素被在侧轴方向被拉伸到与容器相同的高度或宽度。
 
+stretch 会拉伸的前提是 元素没有设置height
+
+![3.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_7cc1651ecb-3.png) 
+
 **align-content**
 
 CSS 的 align-content 属性设置了浏览器如何沿着弹性盒子布局的纵轴和网格布局的主轴在内容项之间和周围分配空间。
@@ -817,12 +828,18 @@ CSS 的 align-content 属性设置了浏览器如何沿着弹性盒子布局的�
 **取值：**
 * flex-start：所有行从垂直轴起点开始填充。第一行的垂直轴起点边和容器的垂直轴起点边对齐。接下来的每一行紧跟前一行。
 * flex-end：所有行从垂直轴末尾开始填充。最后一行的垂直轴终点和容器的垂直轴终点对齐。同时所有后续行与前一个对齐。
-* center：所有行朝向容器的中心填充。每行互相紧挨，相对于容器居中对齐。容器的垂直轴起点边和第一行的距离相等于容器的垂直轴终点边和最后一行的距离。
+* center：所有行朝向容器的中心填充。**每行互相紧挨(与item的区别)**，相对于容器居中对齐。容器的垂直轴起点边和第一行的距离相等于容器的垂直轴终点边和最后一行的距离。
 * stretch：拉伸所有行来填满剩余空间。剩余空间平均地分配给每一行。
+
+
+
+**下面是定义的flex内部的属性上边是定义父节点flex属性**
 
 **order**
 
 定义flex项目的顺序，值越小越靠前。
+
+![4.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_050384d0cb-4.png) 
 
 **flex-grow**
 
@@ -842,17 +859,17 @@ CSS 属性 flex-basis 指定了 flex 元素在主轴方向上的初始大小。
 
 **取值：**
 
-width 值可以是 <length>; 该值也可以是一个相对于其父弹性盒容器主轴尺寸的百分数 。负值是不被允许的。默认为 auto。
+width 值可以是 \<length>; 该值也可以是一个相对于其父弹性盒容器主轴尺寸的百分数 。负值是不被允许的。默认为 auto。
 
 **flex**
 
-flex-grow、flow-shrink、flex-basis的缩写。
+flex-grow增长、flow-shrink收缩、flex-basis初始大小的缩写。
 
 **常用取值：**
 
-auto：flex: 1 1 auto
+**auto**：flex: 1 1 auto
 
-none：flex: 0 0 auto
+**none**：flex: 0 0 auto
 
 ​    
 
@@ -864,7 +881,7 @@ none：flex: 0 0 auto
 
 例如：
 ```csss
-@media(min-width: 768px) {
+@media(min-width: 768px) {  /*当设备分辨率小于768时就会使用下边的css*/
     .container {
         width: 960px;
         background-color: lightblue;
@@ -875,3 +892,26 @@ none：flex: 0 0 auto
 **Bootstrap**
 
 * [Bootstrap地址](https://v5.bootcss.com/)
+
+![7.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_26d055bfcb-7.png) 
+
+一般设置12份
+
+```css
+.col-sm-10 {
+    width: calc(100% * 10 / 12);
+}
+
+.col-sm-11 {
+    width: calc(100% * 11 / 12);
+}
+
+.col-sm-12 {
+    width: calc(100% * 12 / 12);
+}
+
+```
+
+![5.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_12ad23f1cb-5.png) 
+
+![6.png](https://cdn.acwing.com/media/article/image/2022/05/04/189403_3bdc1829cb-6.png) 
