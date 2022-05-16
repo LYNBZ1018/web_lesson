@@ -366,7 +366,9 @@ let person = {
 * person.name、person.add_money()
 * person["name"]、person\["add_money"]()
 
-​     
+​     **用中括号访问更好些**
+
+  
 
 ## 1.7 数组
 
@@ -402,6 +404,7 @@ let b = [
 ```js
 a[0] = 1; // 访问数组a[]的第0个元素
 console.log(a[0]);
+console.log(b[3]());  // 加括号执行函数
 ```
 
 **数组的常用属性和函数**
