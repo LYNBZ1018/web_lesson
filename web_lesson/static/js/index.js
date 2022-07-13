@@ -1,9 +1,11 @@
-let add = (a, b) => {
-    return a + b;
+let Person = {
+    name: 'lyn',
+    age: 18,
+    money: 0,
 }
 
-let main = function () {
-    console.log(add(3, 4));
+function main() {
+    console.log(Person);
 }
 
 export {

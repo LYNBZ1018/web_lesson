@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java Script</title>
-    <link rel="icon" href="/static/images/touxiang.jpg">
-    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <link rel="icon" href="/static/images/logo.png">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script type="module" src="/static/js/index.js"></script>
 </head>
 
-<body>
-    <div class="test">
-        <div class="input">
-            输入
-        </div>
-        <textarea name="text-input" id="text-input" cols="30" rows="10"></textarea>
-        <br>
-        <button>Run</button>
-        <br>
-        <pre>
-
-        </pre>
-
+<body class="background">
+    <div class="div1">
         <script type="module">
             import { main } from "/static/js/index.js";
-
             main();
+        </script>
+        test
+
+        <script type="module">
+            let div = document.querySelector('div');
+
+            div.addEventListener('contextmenu', function (event) {
+                console.log(event.type);
+            });
+
         </script>
     </div>
 </body>
