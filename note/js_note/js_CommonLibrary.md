@@ -1,3 +1,5 @@
+## jQuery
+
 **使用方式**
 
 * 在\<head>元素中添加：
@@ -18,6 +20,14 @@ $('div > p')
 
 `selector` 类似于CSS选择器。
 
+```js
+$('div')  // 按类别选
+$('.class_name')  // 按类选
+$('#id_number')  // 按id选
+```
+
+
+
 **事件**
 
 $(selector).on(event, func)绑定事件，例如：
@@ -34,18 +44,28 @@ $(selector).off(event, func)删除事件，例如：
 $('div').on('click', function (e) {
     console.log("click div");
 
-    $('div').off('click');
+    $('div').off('click');  // 解绑事件
 });
 ```
 当存在多个相同类型的事件触发函数时，可以通过click.name来区分，例如：
 ```js
+let $div = $('div');
+
 $('div').on('click.first', function (e) {
     console.log("click div");
 
     $('div').off('click.first');
 });
+
+$div.on("click.second", function(e) {
+    console.log("click.second");
+    
+    $div.off("click.second");
+});
 ```
 在事件触发的函数中的return false等价于同时执行：
+
+`return false;`  // 相当于执行了下面两句话 既阻止向上传递 又阻止默认事件发生
 
 * `e.stopPropagation()`：阻止事件向上传递
 * `e.preventDefault()`：阻止事件的默认行为
@@ -56,6 +76,28 @@ $('div').on('click.first', function (e) {
 * `$A.show()`：展现，可以添加参数，表示出现时间
 * `$A.fadeOut()`：慢慢消失，可以添加参数，表示消失时间
 * `$A.fadeIn()`：慢慢出现，可以添加参数，表示出现时间
+
+```js
+let main = function() {
+    let $div = $('div');
+    let $btn_hide = $('#btn-hide');
+    let $btn_show = $('#btn-show');
+    
+    $btn_hide.click(function() {
+        $div.hide(1000);  // 1s = 1000ms
+        
+        console.log("hide div");
+    });
+    
+    $btn_show.click(function() {
+        $div.show();
+        
+        console.log("show div");
+    })
+}
+```
+
+
 
 **元素的添加、删除**
 
@@ -78,7 +120,7 @@ $('div').on('click.first', function (e) {
 * 同时设置多个CSS的属性：
 ```js
 $('div').css({
-    width: "200px",
+    width: "200px",  // 不包含减号可以不加""
     height: "200px",
     "background-color": "orange",
 });
@@ -96,12 +138,35 @@ $('div').css({
 `$A.text()`：获取、修改文本信息
 `$A.val()`：获取、修改文本的值
 
+```js
+$div.text();
+$div.text("hello");  // 修改
+
+$('input').val();
+$('input').val("hahaha");
+
+$div.html();
+$div.html('')
+```
+
+
+
 **查找**
 
 * $(selector).parent(filter)：查找父元素
 * $(selector).parents(filter)：查找所有祖先元素
 * $(selector).children(filter)：在所有子元素中查找
 * $(selector).find(filter)：在所有后代元素中查找
+
+```js
+console.log($div3.parent('.div-2'));
+console.log($div3.parents('.div-1'));
+
+console.log($div1.children('div'));  // 找下一个 儿子
+console.log($div1.find('div'));  // 找所有的后代
+```
+
+
 
 **ajax**
 
@@ -131,3 +196,174 @@ $.ajax({
     },
 });
 ```
+
+
+
+​    
+
+## setTimeout && setInterval
+
+`setTimeout(func, delay)`
+`delay`毫秒后，执行函数`func()`。
+
+`clearTimeout()`
+关闭定时器，例如：
+
+```js
+let timeout_id = setTimeout(() => {
+    console.log("Hello World!")
+}, 2000);  // 2秒后在控制台输出"Hello World"
+
+clearTimeout(timeout_id);  // 清除定时器
+```
+
+`setInterval(func, delay)`
+每隔`delay`毫秒，执行一次函数`func()`。
+第一次在第`delay`毫秒后执行。
+
+`clearInterval()`
+关闭周期执行的函数，例如：
+
+```js
+let interval_id = setInterval(() => {
+    console.log("Hello World!")
+}, 2000);  // 每隔2秒，输出一次"Hello World"
+
+clearTimeout(interval_id);  // 清除周期执行的函数
+```
+
+
+
+​     
+
+## requestAnimationFrame
+
+`requestAnimationFrame(func)`
+
+该函数会在下次浏览器刷新页面之前执行一次，通常会用递归写法使其每秒执行60次`func`函数。调用时会传入一个参数，表示函数执行的时间戳，单位为毫秒。
+
+例如：
+
+```js
+let step = (timestamp) => {  // 每帧将div的宽度增加1像素
+    let div = document.querySelector('div');
+    div.style.width = div.clientWidth + 1 + 'px';
+    requestAnimationFrame(step);
+};
+
+requestAnimationFrame(step);
+```
+
+
+与`setTimeout`和`setInterval`的区别：
+
+* `requestAnimationFrame`渲染动画的效果更好，性能更加。
+  该函数可以保证每两次调用之间的时间间隔相同，但`setTimeout`与`setInterval`不能保证这点。`setTmeout`两次调用之间的间隔包含回调函数的执行时间；`setInterval`只能保证按固定时间间隔将回调函数压入栈中，但具体的执行时间间隔仍然受回调函数的执行时间影响。
+* 当页面在后台时，因为页面不再渲染，因此`requestAnimationFrame`不再执行。但setTimeout与setInterval函数会继续执行。
+
+​      
+
+## Map与Set
+
+`Map`
+Map 对象保存键值对。
+
+* 用for...of或者forEach可以按插入顺序遍历。
+* 键值可以为任意值，包括函数、对象或任意基本类型。
+
+常用API：
+
+* `set(key, value)`：插入键值对，如果key已存在，则会覆盖原有的value
+* `get(key)`：查找关键字，如果不存在，返回undefined
+* `size`：返回键值对数量
+* `has(key)`：返回是否包含关键字key
+* `delete(key)`：删除关键字key
+* `clear()`：删除所有元素
+* `Set`
+
+Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。
+
+* 用for...of或者forEach可以按插入顺序遍历。
+
+常用API：
+
+* `add()`：添加元素
+* `has()`：返回是否包含某个元素
+* `size`：返回元素数量
+* `delete()`：删除某个元素
+* `clear()`：删除所有元素
+
+​     
+
+## localStorage
+
+可以在用户的浏览器上存储键值对。
+
+常用API：
+
+* `setItem(key, value)`：插入
+* `getItem(key)`：查找
+* `removeItem(key)`：删除
+* `clear()`：清空
+
+​    
+
+## JSON
+
+JSON对象用于序列化对象、数组、数值、字符串、布尔值和null。
+
+常用API：
+
+* `JSON.parse()`：将字符串解析成对象
+* `JSON.stringify()`：将对象转化为字符串
+
+​     
+
+## 日期
+
+返回值为整数的API，数值为1970-1-1 00:00:00 UTC（世界标准时间）到某个时刻所经过的毫秒数：
+
+* `Date.now()`：返回现在时刻。
+* `Date.parse("2022-04-15T15:30:00.000+08:00")`：返回北京时间2022年4月15日 15:30:00的时刻。
+
+与`Date`对象的实例相关的API：
+
+* `new Date()`：返回现在时刻。
+* `new Date("2022-04-15T15:30:00.000+08:00")`：返回北京时间2022年4月15日 15:30:00的时刻。
+* 两个`Date`对象实例的差值为毫秒数
+* `getDay()`：返回星期，0表示星期日，1-6表示星期一至星期六
+* `getDate()`：返回日，数值为1-31
+* `getMonth()`：返回月，数值为0-11
+* `getFullYear()`：返回年份
+* `getHours()`：返回小时
+* `getMinutes()`：返回分钟
+* `getSeconds()`：返回秒
+
+​      
+
+## WebSocket
+
+与服务器建立全双工连接。
+
+常用API：
+
+* `new WebSocket('ws://localhost:8080');`：建立ws连接。
+* `send()`：向服务器端发送一个字符串。一般用JSON将传入的对象序列化为字符串。
+* `onopen`：类似于onclick，当连接建立时触发。
+* onmessage：当从服务器端接收到消息时触发。
+* `close()`：关闭连接。
+* `onclose`：当连接关闭后触发
+
+   
+
+## window
+
+* `window.open("https://www.acwing.com")`在新标签栏中打开页面。
+* `location.reload()`刷新页面。
+* `location.href = "https://www.acwing.com"`：在当前标签栏中打开页面
+
+
+
+## canvas教程
+
+[canvas](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial)

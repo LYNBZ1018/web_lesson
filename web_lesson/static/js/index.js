@@ -1,13 +1,12 @@
-let Person = {
-    name: 'lyn',
-    age: 18,
-    money: 0,
-}
+let main = function () {
+    let $div1 = $('div-1');
+    let $div2 = $('div-2');
+    let $div3 = $('div-3');
 
-function main() {
-    console.log(Person);
+    console.log($div3.parents('.div-2'));
+    console.log($div1.find('div'));
 }
 
 export {
-    main
+    main,
 }

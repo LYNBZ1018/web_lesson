@@ -7,27 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java Script</title>
     <link rel="icon" href="/static/images/logo.png">
+    <!-- 引入css 和 js -->
     <link rel="stylesheet" href="/static/css/index.css">
     <script type="module" src="/static/js/index.js"></script>
+    <!-- 引入jQuery -->
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body class="background">
-    <div class="div1">
-        <script type="module">
-            import { main } from "/static/js/index.js";
-            main();
-        </script>
-        test
+    <script type="module">
+        import { main, } from "/static/js/index.js";
+        main();
+    </script>
 
-        <script type="module">
-            let div = document.querySelector('div');
+    <div class="div-1">
+        <div class="div-2">
+            <div class="div-3">
 
-            div.addEventListener('contextmenu', function (event) {
-                console.log(event.type);
-            });
-
-        </script>
+            </div>
+        </div>
     </div>
+
 </body>
 
 </html>

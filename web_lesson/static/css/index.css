@@ -4,8 +4,16 @@
     background-color: lightblue;
 }
 
-.div1 {
-    height: 50%;
-    width: 50%;
-    background-color: lightgreen;
+.mydiv {
+    width: 300px;
+    height: 300px;
+    background-color: yellowgreen;
+}
+
+.mydiv1 {
+    background-color: orange;
+}
+
+#bottom {
+    background-color: red;
 }
