@@ -197,9 +197,7 @@ $.ajax({
 });
 ```
 
-
-
-​    
+​       
 
 ## setTimeout && setInterval
 
@@ -217,7 +215,7 @@ let timeout_id = setTimeout(() => {
 clearTimeout(timeout_id);  // 清除定时器
 ```
 
-`setInterval(func, delay)`
+`setInterval(func, delay)`  循环执行
 每隔`delay`毫秒，执行一次函数`func()`。
 第一次在第`delay`毫秒后执行。
 
@@ -232,6 +230,47 @@ let interval_id = setInterval(() => {
 clearTimeout(interval_id);  // 清除周期执行的函数
 ```
 
+**practice**
+
+```js
+let main = () => {
+    let $div = $('div');
+
+    let time_out;
+    $div.click(function () {
+        if (time_out) return false;
+        time_out = setInterval(function () {
+            console.log("click");
+        }, 2000);
+    });
+
+    $div.dblclick(function () {
+        console.log("clear Interval");
+        clearInterval(time_out);
+    });
+}
+
+// cancelAnimationFrame();
+
+let main = () => {
+    let $div = $('div');
+    let animation_id;
+    let step = (timestamp) => {
+        $div.width($div.width() + 1);
+
+        if (timestamp / 1000 <= 10) {
+            animation_id = requestAnimationFrame(step);
+        }
+    }
+
+    animation_id = requestAnimationFrame(step);
+
+    $div.on('click', function () {
+        cancelAnimationFrame(animation_id);
+    });
+}
+```
+
 
 
 ​     
@@ -241,6 +280,8 @@ clearTimeout(interval_id);  // 清除周期执行的函数
 `requestAnimationFrame(func)`
 
 该函数会在下次浏览器刷新页面之前执行一次，通常会用递归写法使其每秒执行60次`func`函数。调用时会传入一个参数，表示函数执行的时间戳，单位为毫秒。
+
+**跳离页面后，不再渲染页面，就不会继续执行**
 
 例如：
 
@@ -261,6 +302,28 @@ requestAnimationFrame(step);
   该函数可以保证每两次调用之间的时间间隔相同，但`setTimeout`与`setInterval`不能保证这点。`setTmeout`两次调用之间的间隔包含回调函数的执行时间；`setInterval`只能保证按固定时间间隔将回调函数压入栈中，但具体的执行时间间隔仍然受回调函数的执行时间影响。
 * 当页面在后台时，因为页面不再渲染，因此`requestAnimationFrame`不再执行。但setTimeout与setInterval函数会继续执行。
 
+**<u>如果做动画，用requestAnimationFrame更好</u>**
+
+**practice**
+
+```js
+let main = () => {
+    let $div = $('div');
+    let step = (timestamp) => {  // 传入一个时间戳
+        $div.width($div.width() + 1);
+
+        if (timestamp / 1000 <= 10) {  // 大于10s就会截止
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
+```
+
+
+
 ​      
 
 ## Map与Set
@@ -279,7 +342,31 @@ Map 对象保存键值对。
 * `has(key)`：返回是否包含关键字key
 * `delete(key)`：删除关键字key
 * `clear()`：删除所有元素
-* `Set`
+
+```js
+let main = () => {
+    let map = new Map();
+    map.set('name', 'lyn');
+    map.set('age', 18);
+
+    console.log(map.get('age'));
+    console.log(map.size);
+    map.clear();
+
+    map.set('name', 'yxc');
+    for (let [key, value] of map) {
+        console.log(`${key}, ${value}`);
+    }
+
+    map.forEach(function (value, key) {
+        console.log(key, value);
+    });
+}
+```
+
+
+
+`Set`
 
 Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。
 
@@ -292,6 +379,22 @@ Set 对象允许你存储任何类型的唯一值，无论是原始值或者是�
 * `size`：返回元素数量
 * `delete()`：删除某个元素
 * `clear()`：删除所有元素
+
+```js
+let main = () => {
+    let set = new Set();
+    set.add(18);
+    set.add(20);
+    set.add(18);  // 只会有一个18
+
+    console.log(set.size);
+    set.forEach(function (value) {
+        console.log(value);
+    });
+}
+```
+
+
 
 ​     
 
