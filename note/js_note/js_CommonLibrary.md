@@ -409,6 +409,8 @@ let main = () => {
 * `removeItem(key)`：删除
 * `clear()`：清空
 
+  ![11.png](https://cdn.acwing.com/media/article/image/2022/07/16/189403_57b24ba604-11.png)   
+
 ​    
 
 ## JSON
@@ -419,6 +421,26 @@ JSON对象用于序列化对象、数组、数值、字符串、布尔值和null
 
 * `JSON.parse()`：将字符串解析成对象
 * `JSON.stringify()`：将对象转化为字符串
+
+```js
+let main = () => {
+    let obj = {
+        "name": 'lyn',
+        "age": 18,
+    }
+
+    console.log(obj);
+    console.log(typeof obj);
+    let str = JSON.stringify(obj);
+    console.log(str);
+    console.log(typeof str);
+    let obj_str = JSON.parse(str);
+    console.log(obj_str);
+
+}
+```
+
+
 
 ​     
 
@@ -442,11 +464,31 @@ JSON对象用于序列化对象、数组、数值、字符串、布尔值和null
 * `getMinutes()`：返回分钟
 * `getSeconds()`：返回秒
 
+```js
+let main = () => {
+    console.log(Date.now());
+    console.log(Date.parse("2022-07-16T09:42:00.000+08:00"));
+
+    let starttime = new Date("2022-07-16T09:42:00.000+08:00");
+    console.log(Date.now() - starttime);
+}
+```
+
+
+
 ​      
 
 ## WebSocket
 
-与服务器建立全双工连接。
+与服务器建立**全双工连接**。
+
+http 只能client向server端发送请求。
+
+而websocket可以server向client端发送请求。
+
+http 加密 => https
+
+websocket ws 加密 => wss
 
 常用API：
 

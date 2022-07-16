@@ -1,12 +1,13 @@
 let main = () => {
-    let set = new Set();
-    set.add(18);
-    set.add(20);
-    set.add(18);
+    let $div = $('div');
+    $div.css('cursor', 'pointer');
+    $div.on('click', function () {
+        // window.open("http://supcache.com:8081/");
+        window.location.href = "http://supcache.com:8081/";
+    });
 
-    console.log(set.size);
-    set.forEach(function (value) {
-        console.log(value);
+    $div.dblclick(function () {
+        location.reload();
     });
 }
 
