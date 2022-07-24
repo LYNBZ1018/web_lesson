@@ -569,7 +569,19 @@ export default Navbar;
 * 静态页面：页面里的数据是写死的
 * 动态页面：页面里的数据是动态填充的
   * 后端渲染：数据在后端填充
+    * client把url传递给服务器 服务器渲染完页面并且加载后数据后传递给客户端
+    * 每次传递一个url的内容
   * 前端渲染：数据在前端填充
+    * 在用户的浏览器中渲染
+    * 一次传递完所有页面的模板
+
+![6.png](https://cdn.acwing.com/media/article/image/2022/07/24/189403_ed6ae8240b-6.png) 
+
+
+
+路由route: 让前端渲染，每一个页面对应一个URL
+
+
 
 **安装环境**
 
@@ -578,7 +590,14 @@ export default Navbar;
 
 **Route组件介绍**
 
-* `BrowserRouter`：所有需要路由的组件，都要包裹在`BrowserRouter`组件内
+* `BrowserRouter`：所有需要路由的组件，都要包裹在`BrowserRouter`组件内·
+
+```jsx
+<BrowserRouter>
+	<App />
+</BrowserRouter>
+```
+
 * `Link`：跳转到某个链接，`to`属性表示跳转到的链接
 * `Routes`：类似于C++中的`switch`，匹配第一个路径
 * `Route`：路由，`path`属性表示路径，`element`属性表示路由到的内容
