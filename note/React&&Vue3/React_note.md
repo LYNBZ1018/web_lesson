@@ -599,8 +599,27 @@ export default Navbar;
 ```
 
 * `Link`：跳转到某个链接，`to`属性表示跳转到的链接
+
+```jsx
+import { Link } from 'react-router-dom';
+<Link className="navbar-brand" to="/">Techonolgy</Link>
+```
+
+
+
 * `Routes`：类似于C++中的`switch`，匹配第一个路径
 * `Route`：路由，`path`属性表示路径，`element`属性表示路由到的内容
+
+```jsx
+import {Routes, Route} from 'react-router-dom';
+
+ <Routes>
+    <Route path="/" element={<Home />}></Route>
+    <Route path="/linux" element={<Linux />}></Route>
+    <Route path="/django" element={<Django />}></Route>
+    <Route path="/web" element={<Web />}></Route>
+</Routes>
+```
 
 
 
@@ -611,6 +630,8 @@ export default Navbar;
 ```JS
 <Route path="/linux/:chapter_id/:section_id/" element={<Linux />} />
 ```
+
+
 
 获取参数，类组件写法：
 
@@ -634,6 +655,8 @@ export default (props) => (
 )
 ```
 
+
+
 函数组件写法：
 
 ```js
@@ -647,6 +670,8 @@ const Linux = () => {
 
 export default Linux;
 ```
+
+
 
 **Search Params传递参数**
 
@@ -683,6 +708,8 @@ export default (props) => (
 );
 ```
 
+
+
 函数组件写法：
 
 ```js
@@ -698,6 +725,8 @@ const Django = () => {
 export default Django;
 ```
 
+
+
 **重定向**
 
 使用`Navigate`组件可以重定向。
@@ -705,6 +734,8 @@ export default Django;
 ```js
 <Route path="*" element={ <Navigate replace to="/404" /> } />
 ```
+
+
 
 **嵌套路由**
 
@@ -716,7 +747,17 @@ export default Django;
 </Route>
 ```
 
+
+
 注意：需要在父组件中添加`<Outlet />`组件，用来填充子组件的内容。
+
+```jsx	
+import {Outlet} from 'react-route-dom';
+
+<Outlet />
+```
+
+
 
 
 
