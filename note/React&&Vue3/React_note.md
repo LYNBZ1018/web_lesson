@@ -773,12 +773,205 @@ redux将所有数据存储到树中，且树是唯一的。
 * `action`：一个普通对象，存储`reducer`的传入参数，一般描述对state的更新类型。
 * `dispatch`：传入一个参数`action`，对整棵`state`树操作一遍。
 
+![39806b6fa121ead548a2e8c5b96bcc6.jpg](https://cdn.acwing.com/media/article/image/2022/07/26/127338_95fb1aec0c-39806b6fa121ead548a2e8c5b96bcc6.jpg) 
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+
+const f1 = (state = 0, action) => {
+  switch(action.type) {
+    case 'add':
+        return state + action.value;
+    case 'sub':
+        return state - action.value;
+    default:
+        return state;
+  }
+}
+
+const f2 = (state = "", action) => {
+  switch(action.type) {
+    case 'concat':
+        return state + action.character;
+    default:
+        return state;
+  }
+}
+
+// const f3 = (state = {}, action) => {
+//   return {
+//     f1: f1(state.f1, action),  // 会一次传递个每一个reducer最终递归调用整棵树的reducer
+//     f2: f2(state.f2, action),  // 因为通过switch-case函数来匹配，所以不同的reducer的case不同就不会错误执行
+//   }
+// }
+
+const f3 = combineReducers({
+  f1: f1,
+  f2: f2,
+})
+
+const store = configureStore({
+  reducer: f3  // 注册reducer
+})
+
+store.subscribe(() => {console.log(store.getState());});  // 没执行一次dispatch就会执行一次这个函数
+
+store.dispatch({type: 'add', value: 1,});  // 会传递给注册的reducer
+store.dispatch({type: 'add', value: 2,});
+store.dispatch({type: 'add', value: 3,});
+store.dispatch({type: 'sub', value: 4,});
+store.dispatch({type: 'sub', value: 5,});
+
+store.dispatch({type: 'concat', character: "lyn",});
+store.dispatch({type: 'concat', character: "18",});
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+   
+  </React.StrictMode>
+);
+```
+
+
+
+
+
 **React-Redux基本概念**
 
 * `Provider`组件：用来包裹整个项目，其store属性用来存储redux的store对象。
+
+```jsx
+import { Provider } from 'react-redux'; 
+<Provider store={store}>
+    <App />
+</Provider>
+```
+
+
+
 * `connect(mapStateToProps, mapDispatchToProps)`函数：用来将store与组件关联起来。
-* `mapStateToProps`：每次store中的状态更新后调用一次，用来更新组件中的值。
-* `mapDispatchToProps`：组件创建时调用一次，用来将store的dispatch函数传入组件。
+
+  * `mapStateToProps`：每次store中的状态更新后调用一次，用来更新组件中的值。
+    * 用于在component中获取值
+
+  ```jsx
+  import React, { Component } from 'react';
+  import { connect } from 'react-redux';
+  
+  class Number extends Component {
+      state = {  }; 
+  
+      handleClickAdd = () => {
+          this.props.add(10);
+      }
+  
+      handleClickSub = () => {
+          this.props.sub(5);
+      }
+  
+      render() { 
+          return (
+              <React.Fragment>
+                  <h3>Number: {this.props.number}</h3>    
+                  <button onClick={this.handleClickAdd}>add</button>
+                  <button onClick={this.handleClickSub}>sub</button>
+              </React.Fragment>
+          );
+      }
+  }
+  
+  const mapStateToProps = (state, props) => {
+      return {
+          number: state.number,  // state.number是reducer 中的 number: f1
+      }
+  }
+  
+  const mapDispatchToProps = {
+      add: (x) => {
+          return {
+              type: "add",
+              value: x,
+          }
+      },
+  
+      sub: (x) => {
+          return {
+              type: "sub",
+              value: x,
+          }
+      }
+  }
+   
+  export default connect(mapStateToProps, mapDispatchToProps)(Number);
+  ```
+
+  
+
+  * `mapDispatchToProps`：组件创建时调用一次，用来将store的dispatch函数传入组件。
+
+
+  ```jsx
+  import React, { Component } from 'react';
+  import { connect } from 'react-redux';
+  
+  class String extends Component {
+      state = {  } 
+  
+      handleClick = () => {
+          this.props.concat('L');
+      }
+  
+      render() { 
+          return (
+              <React.Fragment>
+                  <h3>String:{this.props.string}</h3>
+                  <button onClick={this.handleClick}>添加</button>
+              </React.Fragment>
+          );
+      }
+  }
+   
+  const mapStateToProps = (state, props) => {
+      return {
+          string: state.string,  // state.number是reducer 中的 number: f1
+      }
+  }
+  
+  const mapDispatchToProps = {
+      concat: (c) => {
+          return {
+              type: "concat",
+              character: c,
+          }
+      }
+  }
+   
+  export default connect(mapStateToProps, mapDispatchToProps)(String);
+  ```
+
+  
+
+```jsx
+// reducer
+const f3 = combineReducers({
+  number: f1,
+  string: f2,
+})
+
+const store = configureStore({
+  reducer: f3  // 注册reducer
+})
+```
+
+
 
 **安装**
 
