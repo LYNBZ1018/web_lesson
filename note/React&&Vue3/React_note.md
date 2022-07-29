@@ -981,6 +981,16 @@ const store = configureStore({
 
 ### 7 实战项目——计算机
 
+![1.png](https://cdn.acwing.com/media/article/image/2022/07/27/127338_7ab5ff570d-1.png) 
+
+![3.png](https://cdn.acwing.com/media/article/image/2022/07/29/127338_6e2c2ad90e-3.png) 
+
+**![4.png](https://cdn.acwing.com/media/article/image/2022/07/29/127338_7abd70810e-4.png) **
+
+
+
+
+
 **API**——login
 
 登录
