@@ -1,4 +1,4 @@
-### 1 配置环境
+### ![image-20220803155322489](C:\Users\lyn95\AppData\Roaming\Typora\typora-user-images\image-20220803155322489.png)1 配置环境
 
 [Vue官网](https://vuejs.org/)
 
@@ -45,50 +45,181 @@ vue ui
 
 ### 2 基本概念
 
+每个页面有一个.vue
+
+每个.vue里有html js css 组成
+
 **script部分**
 
 `export default`对象的属性：
 
 * `name`：组件的名称
 * `components`：存储`<template>`中用到的所有组件
-* `props`：存储父组件传递给子组件的数据
+* `props`：**存储父组件传递给子组件的数据**
 * `watch()`：当某个数据发生变化时触发
 * `computed`：动态计算某个数据
+
+```js
+export default {
+    name: 'UserProfileInfo',
+    
+    props: {
+        user: {
+            type: Object,
+            required: true,
+        },
+    },
+
+    setup(props) {
+        let fullName = computed(() => props.user.firstname + ' ' + props.user.lastname);
+
+        return {
+            fullName,
+        }
+    }
+}
+```
+
+
+
 * `setup(props, context)`：初始化变量、函数
   * `ref`定义变量，可以用`.value`属性重新赋值
   * `reactive`定义对象，不可重新赋值
   * `props`存储父组件传递过来的数据
   * `context.emit()`：触发父组件绑定的函数
 
+```js
+setup(props, context) {
+        let fullName = computed(() => props.user.firstname + ' ' + props.user.lastname);
+
+        const follow = () => {
+            context.emit("follow");
+        }
+
+        const unfollow = () => {
+            context.emit("unfollow");
+        }
+
+        return {
+            fullName,
+            follow,
+            unfollow,
+        }
+    }
+```
+
+
+
 *****
 
 **template部分**
 
-* `<slot></slot>`：存放父组件传过来的`children`。
+* `<slot></slot>`：**存放父组件传过来的`children`。**
+* `<router-link></router-link>`要想实现前端渲染
+  * `<router-link :to"{name: 'home'}>首页</router-link>`
 * `v-on:click`或`@click`属性：绑定事件
+
+```html
+ <div @click="follow" v-if="!user.is_followed" class="btn btn-primary btn-sm">Follow</div>
+```
+
+
+
 * `v-if`、`v-else`、`v-else-if`属性：判断
+
+```js
+<div v-if="!user.is_followed" class="btn btn-primary btn-sm">Followed</div>
+```
+
+
+
 * `v-for`属性：循环，:`key`循环的每个元素需要有唯一的`key`
+
+```html
+<div v-for="(post) in posts" :key="post.id">
+     <div class="card">
+         <div class="card-body">
+             {{ post.content }}
+         </div>
+     </div>
+</div>
+```
+
+
+
 * `v-bind:`或`:`：绑定属性
+
+* `v-model`:将输入内容和变量绑定起来
+
+```html
+<textarea v-model="content" class="form-control" id="edit-post" rows="3"></textarea>
+```
+
+
 
 *****
 
 **style部分**
 
-* `<style>`标签添加`scope`属性后，不同组件间的css不会相互影响。
+* `<style>`标签添加`scope`属性后，**不同组件间的css不会相互影响。**
+  * 从而不需要考虑不同组件之间会相互影响
 
 *****
 
 **第三方组件**
 
 * `view-router`包：实现路由功能。
+
 * `vuex`：存储全局状态，全局唯一。
+  
   * `state`: 存储所有数据，可以用`modules`属性划分成若干模块
   * `getters`：根据`state`中的值计算新的值
-  * `mutations`：所有对state的修改操作都需要定义在这里，不支持异步，可以通过`$store.commit()`触发
-  * `actions`：定义对state的复杂修改操作，支持异步，可以通过`$store.dispatch()`触发。注意不能直接修改`state`，只能通过`mutations`修改`state`。
-  * `modules`：定义`state`的子模块
-
+  * `mutations`：所有对state的修改操作都需要定义在这里，**不支持异步**，可以通过`$store.commit()`触发
+  * `actions`：定义对state的复杂修改操作，**支持异步**，可以通过`$store.dispatch()`触发。注意不能直接修改`state`，只能通过`mutations`修改`state`。
+  
+* `modules`：定义`state`的子模块
+  
    
+  
+  ```js
+  import { createStore } from 'vuex'
+  
+  export default createStore({
+    state: {
+      user: {
+        username: "",
+        id: "",
+        firstName: "",
+        lastName: "",
+      }
+    },
+    getters: {
+      fullName(state) {
+        return state.user.firstName + state.user.lastName;
+      }
+    },
+    mutations: {
+      updateUser(state, user) {
+  
+      }
+    },
+    actions: {
+      updateUser(context) {
+        let resp;
+      }
+    },
+    modules: {
+    }
+  })
+  ```
+  
+  
+
+
+
+![5.png](https://cdn.acwing.com/media/article/image/2022/07/29/189403_91287c9c0f-5.png)
+
+![28c5464d19f6794ea314653e8ee1f00.jpg](https://cdn.acwing.com/media/article/image/2022/08/03/189403_099fe1ea13-28c5464d19f6794ea314653e8ee1f00.jpg)  
 
 ### 3 项目API
 
